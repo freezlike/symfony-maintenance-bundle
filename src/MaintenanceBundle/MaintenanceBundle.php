@@ -1,5 +1,5 @@
 <?php
-namespace MyVendor\MaintenanceBundle;
+namespace FreezLike\MaintenanceBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

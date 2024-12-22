@@ -1,12 +1,12 @@
 {
-    "name": "my-vendor/maintenance-bundle",
+    "name": "freezlike/maintenance-bundle",
     "description": "A Symfony bundle to manage maintenance mode with notifications.",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
         {
-            "name": "Your Name",
-            "email": "your-email@example.com"
+            "name": "Hedi RIAHI",
+            "email": "tic.hedi@gmail.com"
         }
     ],
     "require": {
@@ -16,13 +16,13 @@
     },
     "autoload": {
         "psr-4": {
-            "MyVendor\\MaintenanceBundle\\": "src/MaintenanceBundle/"
+            "FreezLike\\MaintenanceBundle\\": "src/MaintenanceBundle/"
         }
     },
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "6.0"
+            "require": "5.0"
         }
     }
 }

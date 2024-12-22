@@ -1,0 +1,24 @@
+<?php
+
+namespace FreezLike\MaintenanceBundle\DependencyInjection;
+
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\Config\FileLocator;
+
+class MaintenanceExtension extends Extension
+{
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $container->setParameter('maintenance.active', $config['active']);
+        $container->setParameter('maintenance.next_maintenance_date', $config['next_maintenance_date']);
+        $container->setParameter('maintenance.allowed_role', $config['allowed_role']);
+
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('services.yaml');
+    }
+}

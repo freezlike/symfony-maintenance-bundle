@@ -1,0 +1,9 @@
+services:
+  FreezLike\MaintenanceBundle\Service\MaintenanceManager:
+    arguments:
+      $active: "%maintenance.active%"
+      $nextMaintenanceDate: "%maintenance.next_maintenance_date%"
+      $allowedRole: "%maintenance.allowed_role%"
+  FreezLike\MaintenanceBundle\EventListener\MaintenanceListener:
+    tags:
+      - { name: "kernel.event_listener", event: "kernel.request", priority: 10 }
