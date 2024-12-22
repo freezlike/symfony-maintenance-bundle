@@ -4,7 +4,12 @@
 {% block title %}Maintenance Mode{% endblock %}
 
 {% block body %}
-    <div class="maintenance-notice">
+    <div class="maintenance-notice" style="
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    padding: 50px;
+">
         <h1>We’re Under Maintenance</h1>
         <p>Our website is currently undergoing scheduled maintenance.</p>
         {% if nextMaintenanceDate %}
