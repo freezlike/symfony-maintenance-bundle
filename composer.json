@@ -1,0 +1,28 @@
+{
+    "name": "my-vendor/maintenance-bundle",
+    "description": "A Symfony bundle to manage maintenance mode with notifications.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your-email@example.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "symfony/framework-bundle": "^5.0",
+        "symfony/security-bundle": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MyVendor\\MaintenanceBundle\\": "src/MaintenanceBundle/"
+        }
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true,
+            "require": "6.0"
+        }
+    }
+}
