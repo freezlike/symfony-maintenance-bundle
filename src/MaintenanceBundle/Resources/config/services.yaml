@@ -6,11 +6,9 @@ services:
       $allowedRole: "%maintenance.allowed_role%"
       $security: '@security.helper'
   FreezLike\MaintenanceBundle\EventListener\MaintenanceListener:
-    # arguments:
-    #     $active: '%maintenance.active%'
-    #     $allowedRole: '%maintenance.allowed_role%'
-    #     $nextMaintenanceDate: '@=service("date_time_factory").createFromFormat("Y-m-d H:i:s", parameter("maintenance.next_maintenance_date"))'
-    #     $security:
+    arguments:
+        $maintenanceManager: '@FreezLike\MaintenanceBundle\Manager\MaintenanceManager'
+        $twig: '@twig'
     tags:
       - { name: "kernel.event_listener", event: "kernel.request", priority: 10 }
   FreezLike\MaintenanceBundle\Twig\MaintenanceExtension:
