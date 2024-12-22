@@ -3,6 +3,8 @@
     "description": "A Symfony bundle to manage maintenance mode with notifications.",
     "type": "symfony-bundle",
     "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "Hedi RIAHI",
