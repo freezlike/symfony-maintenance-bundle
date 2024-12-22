@@ -1,17 +1,17 @@
+
 # Maintenance Bundle
 
 ## Introduction
 
-The **Maintenance Bundle** is a Symfony bundle that allows you to manage maintenance mode for your Symfony application. 
-It includes configurable parameters such as whether maintenance mode is active, the date of the next scheduled maintenance, 
-and a role that can bypass maintenance restrictions. This bundle is lightweight, easy to configure, and customizable.
+The **Maintenance Bundle** is a Symfony bundle for managing maintenance mode in your application. 
+It provides the ability to schedule maintenance, notify users about upcoming maintenance, and allow specific roles to bypass maintenance mode.
 
 ## Features
 
-- Activate or deactivate maintenance mode via configuration.
-- Display the next scheduled maintenance date to users.
-- Allow users with specific roles to bypass maintenance mode.
-- Highly configurable and easy to integrate into your Symfony application.
+- Activate or deactivate maintenance mode.
+- Display the next maintenance date.
+- Notify users about upcoming maintenance via a global notification.
+- Allow specific roles to bypass maintenance mode.
 
 ## Requirements
 
@@ -20,29 +20,26 @@ and a role that can bypass maintenance restrictions. This bundle is lightweight,
 
 ## Installation
 
-1. Install the bundle via Composer:
+1. Install via Composer:
 
    ```bash
    composer require freezlike/maintenance-bundle
    ```
 
-2. Enable the bundle in your `config/bundles.php` file (if not automatically added):
+2. Enable the bundle in `config/bundles.php`:
 
    ```php
    return [
-       // ...
        FreezLike\MaintenanceBundle\MaintenanceBundle::class => ['all' => true],
    ];
    ```
 
-3. Configure the bundle in your Symfony application:
-
-   Add the following configuration to your `config/packages/maintenance.yaml` file:
+3. Configure the bundle in `config/packages/maintenance.yaml`:
 
    ```yaml
    maintenance:
        active: false
-       next_maintenance_date: null
+       next_maintenance_date: '2024-12-31 23:59:59'
        allowed_role: 'ROLE_ADMIN'
    ```
 
@@ -56,7 +53,7 @@ and a role that can bypass maintenance restrictions. This bundle is lightweight,
 
 ### Activating Maintenance Mode
 
-To activate maintenance mode, set the `active` parameter to `true` in the configuration file:
+Set the `active` parameter to `true` and configure the next maintenance date:
 
 ```yaml
 maintenance:
@@ -65,55 +62,34 @@ maintenance:
     allowed_role: 'ROLE_ADMIN'
 ```
 
-Users without the specified `allowed_role` will see a maintenance message when trying to access the application.
+### Displaying Maintenance Notifications
 
-### Displaying Maintenance Information
+To notify users about the next maintenance, use the `next_maintenance_date()` function in your templates:
 
-You can use the `MaintenanceManager` service in your controllers or templates to display the next maintenance date:
-
-```php
-<?php
-namespace App\Controller;
-
-use FreezLike\MaintenanceBundle\Service\MaintenanceManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-
-class DefaultController extends AbstractController
-{
-    private MaintenanceManager $maintenanceManager;
-
-    public function __construct(MaintenanceManager $maintenanceManager)
-    {
-        $this->maintenanceManager = $maintenanceManager;
-    }
-
-    public function index(): Response
-    {
-        $nextMaintenanceDate = $this->maintenanceManager->getNextMaintenanceDate();
-        return $this->render('default/index.html.twig', [
-            'nextMaintenanceDate' => $nextMaintenanceDate,
-        ]);
-    }
-}
+```twig
+{% if next_maintenance_date() %}
+    <div class="notification">
+        <p>Next maintenance is scheduled for: {{ next_maintenance_date() }}</p>
+    </div>
+{% endif %}
 ```
 
-### Event Listener
+### Maintenance Page
 
-The bundle includes an event listener that handles maintenance mode automatically by returning a 503 response when the site is under maintenance.
+When maintenance mode is active, users without the specified role will see a maintenance page. The page inherits your application's design and displays a message with the next maintenance date.
+
+### Extending Notifications
+
+The notification message can be customized by overriding the `base.html.twig` file or using Twig blocks.
 
 ## Contribution
 
 Contributions are welcome!
 
-1. Fork the repository on GitHub.
-2. Create a new branch for your feature or bug fix.
-3. Submit a pull request with a clear explanation of your changes.
+1. Fork the repository.
+2. Create a feature branch.
+3. Submit a pull request.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
-
----
-
-**Happy Coding!**
+This project is licensed under the MIT License.

@@ -1,0 +1,15 @@
+{# src/MaintenanceBundle/Resources/views/maintenance.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Maintenance Mode{% endblock %}
+
+{% block body %}
+    <div class="maintenance-notice">
+        <h1>We’re Under Maintenance</h1>
+        <p>Our website is currently undergoing scheduled maintenance.</p>
+        {% if nextMaintenanceDate %}
+            <p>We expect to be back by: <strong>{{ nextMaintenanceDate|date('Y-m-d H:i') }}</strong></p>
+        {% endif %}
+        <p>Thank you for your patience!</p>
+    </div>
+{% endblock %}

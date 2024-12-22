@@ -37,4 +37,9 @@ class MaintenanceManager
     {
         return $this->nextMaintenanceDate;
     }
+    public function getFormattedNextMaintenanceDate(): ?string
+    {
+        $nextDate = $this->getNextMaintenanceDate();
+        return $nextDate ? $nextDate->format('l, F j, Y \a\t H:i') : null;
+    }
 }
