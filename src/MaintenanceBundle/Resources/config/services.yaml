@@ -7,7 +7,7 @@ services:
       $security: '@security.helper'
   FreezLike\MaintenanceBundle\EventListener\MaintenanceListener:
     arguments:
-        $maintenanceManager: '@FreezLike\MaintenanceBundle\Manager\MaintenanceManager'
+        $maintenanceManager: '@FreezLike\MaintenanceBundle\Service\MaintenanceManager'
         $twig: '@twig'
     tags:
       - { name: "kernel.event_listener", event: "kernel.request", priority: 10 }
