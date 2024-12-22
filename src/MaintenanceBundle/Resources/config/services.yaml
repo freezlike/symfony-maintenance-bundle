@@ -7,9 +7,6 @@ services:
   FreezLike\MaintenanceBundle\EventListener\MaintenanceListener:
     tags:
       - { name: "kernel.event_listener", event: "kernel.request", priority: 10 }
-  twig:
-    paths:
-      "%kernel.project_dir%/src/MaintenanceBundle/Resources/views": Maintenance
   FreezLike\MaintenanceBundle\Twig\MaintenanceExtension:
     arguments:
       $maintenanceManager: '@FreezLike\MaintenanceBundle\Service\MaintenanceManager'

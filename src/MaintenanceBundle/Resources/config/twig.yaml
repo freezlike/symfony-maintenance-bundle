@@ -1,0 +1,9 @@
+# twig:
+#   paths:
+#     "%kernel.project_dir%/src/MaintenanceBundle/Resources/views": Maintenance
+twig:
+    paths:
+        '%kernel.project_dir%/templates': ~
+        '%kernel.project_dir%/vendor/freezlike/maintenance-bundle/templates': MaintenanceBundle
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
