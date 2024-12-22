@@ -22,7 +22,7 @@ class MaintenanceListener
     {
         if ($this->maintenanceManager->isUnderMaintenance()) {
             $nextMaintenanceDate = $this->maintenanceManager->getNextMaintenanceDate();
-            $content = $this->twig->render('maintenance.html.twig', [
+            $content = $this->twig->render('@Maintenance/maintenance.html.twig', [
                 'nextMaintenanceDate' => $nextMaintenanceDate,
             ]);
 
