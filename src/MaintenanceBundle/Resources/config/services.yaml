@@ -4,7 +4,7 @@ services:
       $active: "%maintenance.active%"
       $nextMaintenanceDate: "%maintenance.next_maintenance_date%"
       $allowedRole: "%maintenance.allowed_role%"
-      $securty: true
+      $security: true
   FreezLike\MaintenanceBundle\EventListener\MaintenanceListener:
     # arguments:
     #     $active: '%maintenance.active%'
