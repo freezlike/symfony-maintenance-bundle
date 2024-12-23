@@ -23,7 +23,7 @@ It provides the ability to schedule maintenance, notify users about upcoming mai
 1. Install via Composer:
 
    ```bash
-   composer require freezlike/maintenance-bundle
+   composer require freezlike/maintenance-bundle:dev-main
    ```
 
 2. Enable the bundle in `config/bundles.php`:
