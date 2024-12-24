@@ -11,11 +11,13 @@ class MaintenanceListener
 {
     private MaintenanceManager $maintenanceManager;
     private Environment $twig;
+    private Security $security;
 
-    public function __construct(MaintenanceManager $maintenanceManager, Environment $twig)
+    public function __construct(MaintenanceManager $maintenanceManager, Environment $twig, Security $security)
     {
         $this->maintenanceManager = $maintenanceManager;
         $this->twig = $twig;
+        $this->security = $security;
     }
 
     public function onKernelRequest(RequestEvent $event): void
