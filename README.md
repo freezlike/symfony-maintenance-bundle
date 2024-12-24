@@ -39,7 +39,7 @@ It provides the ability to schedule maintenance, notify users about upcoming mai
    ```yaml
    maintenance:
        active: false
-       next_maintenance_date: '2024-12-31 23:59:59'
+       next_maintenance_date: '2024-12-31 12:30'
        allowed_role: 'ROLE_ADMIN'
    ```
 4. If you use security bundle enable lazy mode in `config/packages/security.yaml` under the filewall(s) you use:
@@ -74,7 +74,7 @@ Set the `active` parameter to `true` and configure the next maintenance date:
 ```yaml
 maintenance:
     active: true
-    next_maintenance_date: '2024-12-31 23:59:59'
+    next_maintenance_date: '2024-12-31 12:30'
     allowed_role: 'ROLE_ADMIN'
 ```
 

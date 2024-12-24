@@ -4,14 +4,18 @@ services:
       $active: "%maintenance.active%"
       $nextMaintenanceDate: "%maintenance.next_maintenance_date%"
       $allowedRole: "%maintenance.allowed_role%"
-      $security: '@security.helper'
+      $security: "@security.helper"
   FreezLike\MaintenanceBundle\EventListener\MaintenanceListener:
     arguments:
-        $maintenanceManager: '@FreezLike\MaintenanceBundle\Service\MaintenanceManager'
-        $twig: '@twig'
-        $security: '@security.helper'
+      $maintenanceManager: '@FreezLike\MaintenanceBundle\Service\MaintenanceManager'
+      $twig: "@twig"
+      $security: "@security.helper"
     tags:
-      - { name: "kernel.event_listener", event: "kernel.request", priority: 10 }
+      - {
+          name: "kernel.event_listener",
+          event: "kernel.request",
+          priority: -10,
+        }
   FreezLike\MaintenanceBundle\Twig\MaintenanceExtension:
     arguments:
       $maintenanceManager: '@FreezLike\MaintenanceBundle\Service\MaintenanceManager'
