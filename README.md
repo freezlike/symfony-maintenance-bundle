@@ -42,8 +42,24 @@ It provides the ability to schedule maintenance, notify users about upcoming mai
        next_maintenance_date: '2024-12-31 23:59:59'
        allowed_role: 'ROLE_ADMIN'
    ```
+4. If you use security bundle enable lazy mode in `config/packages/security.yaml` under the filewall(s) you use:
 
-4. Clear the cache:
+   ```yaml
+   firewalls:
+        dev:
+            lazy: true
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: true
+            custom_authenticators:
+                - App\Security\CustomAuthenticator
+        main:
+            lazy: true
+            provider: custom
+            custom_authenticators:
+                - App\Security\CustomAuthenticator
+   ```
+
+5. Clear the cache:
 
    ```bash
    php bin/console cache:clear
