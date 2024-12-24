@@ -6,6 +6,7 @@ use FreezLike\MaintenanceBundle\Service\MaintenanceManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Twig\Environment;
+use Symfony\Component\Security\Core\Security;
 
 class MaintenanceListener
 {
