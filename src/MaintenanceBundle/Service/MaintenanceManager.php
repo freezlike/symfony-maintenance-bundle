@@ -40,31 +40,31 @@ class MaintenanceManager
     }
 
     public function getNextMaintenanceDate(): ?\DateTime
-{
-    $date =  $this->nextMaintenanceDate ?? null;
+    {
+        $date =  $this->nextMaintenanceDate ?? null;
 
-    if ($date === null) {
-        return null;
-    }
-
-    // Convertir en \DateTime si ce n'est pas déjà un objet
-    if (is_string($date)) {
-        try {
-            $date = new \DateTime($date);
-        } catch (\Exception $e) {
-            $this->logger->error('Invalid next_maintenance_date format: ' . $date);
+        if ($date === null) {
             return null;
         }
-    }
 
-    // Vérifier si la date est inférieure à aujourd'hui
-    $now = new \DateTime();
-    if ($date < $now) {
-        return null;
-    }
+        // Convertir en \DateTime si ce n'est pas déjà un objet
+        if (is_string($date)) {
+            try {
+                $date = new \DateTime($date);
+            } catch (\Exception $e) {
+                // $this->logger->error('Invalid next_maintenance_date format: ' . $date);
+                return null;
+            }
+        }
 
-    return $date;
-}
+        // Vérifier si la date est inférieure à aujourd'hui
+        $now = new \DateTime();
+        if ($date < $now) {
+            return null;
+        }
+
+        return $date;
+    }
     public function getFormattedNextMaintenanceDate(): ?string
     {
         try {
