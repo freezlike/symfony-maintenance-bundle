@@ -26,6 +26,7 @@ class MaintenanceManager
         }
 
         $user = $this->security->getUser();
+        // dd($user);
         if ($user && $this->security->isGranted($this->allowedRole)) {
             return false;
         }
@@ -33,13 +34,44 @@ class MaintenanceManager
         return true;
     }
 
-    public function getNextMaintenanceDate(): ?string
+    public function getNextMaintenanceDateOld(): ?string
     {
         return $this->nextMaintenanceDate;
     }
+
+    public function getNextMaintenanceDate(): ?\DateTime
+{
+    $date =  $this->nextMaintenanceDate ?? null;
+
+    if ($date === null) {
+        return null;
+    }
+
+    // Convertir en \DateTime si ce n'est pas déjà un objet
+    if (is_string($date)) {
+        try {
+            $date = new \DateTime($date);
+        } catch (\Exception $e) {
+            $this->logger->error('Invalid next_maintenance_date format: ' . $date);
+            return null;
+        }
+    }
+
+    // Vérifier si la date est inférieure à aujourd'hui
+    $now = new \DateTime();
+    if ($date < $now) {
+        return null;
+    }
+
+    return $date;
+}
     public function getFormattedNextMaintenanceDate(): ?string
     {
-        $nextDate = $this->getNextMaintenanceDate();
-        return $nextDate ? $nextDate->format('l, F j, Y \a\t H:i') : null;
+        try {
+            $nextDate = \Datetime::createFromFormat($this->getNextMaintenanceDate(), 'Y-m-d H:i');
+            return $nextDate ? $nextDate->format('l, F j, Y \a\t H:i') : null;
+        } catch (\Exception $th) {
+            return $th->getMessage();
+        }
     }
 }
