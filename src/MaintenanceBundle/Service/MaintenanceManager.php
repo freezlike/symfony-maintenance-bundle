@@ -68,7 +68,7 @@ class MaintenanceManager
     public function getFormattedNextMaintenanceDate(): ?string
     {
         try {
-            $nextDate = \Datetime::createFromFormat($this->getNextMaintenanceDate(), 'Y-m-d H:i');
+            $nextDate = $this->getNextMaintenanceDate();
             return $nextDate ? $nextDate->format('l, F j, Y \a\t H:i') : null;
         } catch (\Exception $th) {
             return $th->getMessage();
