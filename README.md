@@ -16,7 +16,7 @@ It provides the ability to schedule maintenance, notify users about upcoming mai
 ## Requirements
 
 - PHP 8.0 or higher
-- Symfony 5.0 or higher
+- Symfony 6.0 or higher
 
 ## Installation
 
