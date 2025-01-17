@@ -108,4 +108,8 @@ Contributions are welcome!
 
 ## License
 
-This project is licensed under the MIT License.
+This bundle is open-source and available under the [MIT License](LICENSE).  
+
+You are free to use, modify, and distribute this bundle, even for commercial purposes, as long as you include the copyright notice and license terms in any copy or substantial portion of the bundle.  
+
+For more details, see the [LICENSE](LICENSE) file.
