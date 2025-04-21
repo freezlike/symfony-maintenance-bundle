@@ -8,7 +8,7 @@ use Twig\TwigFunction;
 
 class MaintenanceExtension extends AbstractExtension
 {
-    private MaintenanceManager $maintenanceManager;
+    private $maintenanceManager;
 
     public function __construct(MaintenanceManager $maintenanceManager)
     {
