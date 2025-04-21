@@ -10,9 +10,9 @@ use Symfony\Component\Security\Core\Security;
 
 class MaintenanceListener
 {
-    private MaintenanceManager $maintenanceManager;
-    private Environment $twig;
-    private Security $security;
+    private $maintenanceManager;
+    private $twig;
+    private $security;
 
     public function __construct(MaintenanceManager $maintenanceManager, Environment $twig, Security $security)
     {

@@ -6,10 +6,10 @@ use Symfony\Component\Security\Core\Security;
 
 class MaintenanceManager
 {
-    private bool $active;
-    private ?string $nextMaintenanceDate;
-    private string $allowedRole;
-    private Security $security;
+    private $active;
+    private $nextMaintenanceDate;
+    private $allowedRole;
+    private $security;
 
     public function __construct(bool $active, ?string $nextMaintenanceDate, string $allowedRole, Security $security)
     {
