@@ -23,7 +23,7 @@ class MaintenanceListener
 
     public function onKernelRequest(RequestEvent $event): void
     {
-        if ($this->maintenanceManager->isUnderMaintenance()) {
+        if ($this->maintenanceManager->isUnderMaintenance() && $this->security->getUser()) {
             $nextMaintenanceDate = $this->maintenanceManager->getNextMaintenanceDate();
             $content = $this->twig->render('@Maintenance/maintenance.html.twig', [
                 'nextMaintenanceDate' => $nextMaintenanceDate,
